@@ -76,6 +76,12 @@ int	ft_check_map(t_game *game, int i, int is_doublon_P, int is_doublon_E)
 				ft_putendl_fd("Map is not valid. Use of non-allowed chars.", 2);
 				return (0);
 			}
+			if (game->enemy_isup == 0 && game->map[i][j] == '0')
+			{
+				game->enemy_isup = 1;
+				game->enemy_pos[0] = j;
+				game->enemy_pos[1] = i;
+			}
 			else if (game->map[i][j] == 'P')
 			{
 				is_doublon_P++;

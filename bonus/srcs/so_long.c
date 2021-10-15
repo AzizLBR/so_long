@@ -18,6 +18,8 @@ static void	ft_init(t_game *game)
 	game->x = 0;
 	game->y = 0;
 	game->nbr_of_moov = 0;
+	game->left = 0;
+	game->right = 1;
 }
 void	ft_get_x_y_len(t_game *game)
 {

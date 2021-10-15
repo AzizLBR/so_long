@@ -21,15 +21,15 @@ int ft_esc_press(t_game *game)
 
 int	ft_key_press(int keypressed, t_game *game)
 {
-	if (keypressed == 0)
+	if (keypressed == 97)
 		ft_mooveleft(game);
-	if (keypressed == 2)
+	if (keypressed == 100)
 		ft_mooveright(game);
-	if (keypressed == 1)
+	if (keypressed == 115)
 		ft_moovedown(game);
-	if (keypressed == 13)
+	if (keypressed == 119)
 		ft_mooveup(game);
-	if (keypressed == 53)
+	if (keypressed == 65307)
 		ft_exit_game(game);
 	return (keypressed);
 }

@@ -13,6 +13,9 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 # define PATH "imgs/wa.xpm imgs/gr.xpm imgs/pl.xpm imgs/co.xpm imgs/ex.xpm"
+# define PATH2 "imgs/0.xpm imgs/1.xpm imgs/2.xpm imgs/3.xpm imgs/4.xpm "
+# define PATH3 "imgs/5.xpm imgs/6.xpm imgs/7.xpm imgs/8.xpm imgs/9.xpm"
+# define PATH4 "imgs/co2.xpm imgs/po.xpm"
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -20,7 +23,7 @@
 # include <stdio.h>
 # include <mlx.h>
 # include <fcntl.h>
-# define MALLOC NULL
+
 typedef struct	s_mlx {
 	void	*img;
 	char	*addr;
@@ -33,6 +36,8 @@ typedef struct	s_mlx {
 	int		xwidth;
 	int		yheight;
 	void	*txt[5];
+	void    *txt_number[10];
+	void	*txt_bonus[2];
 	int		res_x;
 	int		res_y;
 }				t_mlx;
@@ -46,6 +51,10 @@ typedef struct	s_game
 	int			player_position[2];
 	int			collectible_numbers;
 	int			nbr_of_moov;
+	int			enemy_isup;
+	int			enemy_pos[2];
+	int			left;
+	int			right;
 	t_mlx	mlx;
 }				t_game;
 
@@ -62,5 +71,7 @@ void	ft_moovedown(t_game *game);
 void	ft_mooveup(t_game *game);
 void	ft_exit_game(t_game *game);
 void	ft_free_tab(char **str);
+void	ft_enemy_moove(t_game *game);
+void	ft_exit_lost_game(t_game *game);
 
 #endif
