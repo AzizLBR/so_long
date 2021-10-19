@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aloubar <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: aloubar <aloubar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 16:09:11 by aloubar           #+#    #+#             */
-/*   Updated: 2021/10/13 22:33:35 by aloubar          ###   ########.fr       */
+/*   Updated: 2021/10/18 15:03:10 by aloubar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <stdio.h>
 # include <mlx.h>
 # include <fcntl.h>
-# define MALLOC NULL
-typedef struct	s_mlx {
+
+typedef struct s_mlx {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -37,7 +37,7 @@ typedef struct	s_mlx {
 	int		res_y;
 }				t_mlx;
 
-typedef struct	s_game
+typedef struct s_game
 {
 	char		**map;
 	int			x;
@@ -46,10 +46,10 @@ typedef struct	s_game
 	int			player_position[2];
 	int			collectible_numbers;
 	int			nbr_of_moov;
-	t_mlx	mlx;
+	t_mlx		mlx;
 }				t_game;
 
-int		minilib(t_game *game);
+int		ft_mlx_game_init(t_game *game);
 void	ft_parse_map(t_game *game, char **av, char *buff);
 int		ft_check_char(char c);
 void	ft_free(t_game *game);
@@ -62,5 +62,8 @@ void	ft_moovedown(t_game *game);
 void	ft_mooveup(t_game *game);
 void	ft_exit_game(t_game *game);
 void	ft_free_tab(char **str);
+int		ft_is_map_closed(t_game *game, int j);
+int		ft_draw_to_map(t_game *game);
+int		ft_esc_press(t_game *game);
 
 #endif

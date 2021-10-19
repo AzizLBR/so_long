@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memory_managment.c                                 :+:      :+:    :+:   */
+/*   exit_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aloubar <aloubar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/13 22:18:06 by aloubar           #+#    #+#             */
-/*   Updated: 2021/10/18 14:55:11 by aloubar          ###   ########.fr       */
+/*   Created: 2021/10/18 17:02:04 by aloubar           #+#    #+#             */
+/*   Updated: 2021/10/19 13:20:48 by aloubar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes_bonus/so_long.h"
 
-void	ft_free_tab(char **str)
+int	ft_esc_press(t_game *game)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		free(str[i]);
-		i++;
-	}
-	free(str);
+	ft_exit_game(game);
+	exit(0);
+	return (1);
 }
 
-void	ft_free(t_game *game)
+void	ft_exit_game(t_game *game)
 {
-	if (game->map)
-		ft_free_tab(game->map);
-	if (game->mlx.mlx_win)
-		mlx_destroy_window(game->mlx.mlx_ptr, game->mlx.mlx_win);
-	if (game->mlx.mlx_ptr)
-		free(game->mlx.mlx_ptr);
+	ft_free(game);
+	exit(1);
+}
+
+void	ft_exit_lost_game(t_game *game)
+{
+	printf("You lost. Try again!\n");
+	ft_exit_game(game);
 }

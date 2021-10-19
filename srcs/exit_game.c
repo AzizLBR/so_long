@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memory_managment.c                                 :+:      :+:    :+:   */
+/*   exit_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aloubar <aloubar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/13 22:18:06 by aloubar           #+#    #+#             */
-/*   Updated: 2021/10/18 14:55:11 by aloubar          ###   ########.fr       */
+/*   Created: 2021/10/15 21:20:16 by aloubar           #+#    #+#             */
+/*   Updated: 2021/10/19 13:21:03 by aloubar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	ft_free_tab(char **str)
+void	ft_exit_game(t_game *game)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		free(str[i]);
-		i++;
-	}
-	free(str);
+	printf("Total numbers of mooves : %d\n", game->nbr_of_moov);
+	ft_free(game);
+	exit(1);
 }
 
-void	ft_free(t_game *game)
+int	ft_esc_press(t_game *game)
 {
-	if (game->map)
-		ft_free_tab(game->map);
-	if (game->mlx.mlx_win)
-		mlx_destroy_window(game->mlx.mlx_ptr, game->mlx.mlx_win);
-	if (game->mlx.mlx_ptr)
-		free(game->mlx.mlx_ptr);
+	ft_exit_game(game);
+	return (1);
 }

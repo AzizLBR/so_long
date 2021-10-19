@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aloubar <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: aloubar <aloubar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 15:38:20 by aloubar           #+#    #+#             */
-/*   Updated: 2021/10/13 22:48:34 by aloubar          ###   ########.fr       */
+/*   Updated: 2021/10/18 14:54:51 by aloubar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static char	**ft_parse_and_fill_map(char *buff)
 
 static void	ft_open_and_read(t_game *game, char **av, char *buff)
 {
-	int ret;
+	int	ret;
 
 	ret = 0;
 	game->fd = open(av[1], O_RDONLY);

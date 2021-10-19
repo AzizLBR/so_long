@@ -1,36 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memory_managment.c                                 :+:      :+:    :+:   */
+/*   draw_enemy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aloubar <aloubar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/13 22:18:06 by aloubar           #+#    #+#             */
-/*   Updated: 2021/10/18 14:55:11 by aloubar          ###   ########.fr       */
+/*   Created: 2021/10/18 16:48:30 by aloubar           #+#    #+#             */
+/*   Updated: 2021/10/18 16:57:27 by aloubar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes_bonus/so_long.h"
 
-void	ft_free_tab(char **str)
+void	ft_draw_ennemy(t_game *game)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		free(str[i]);
-		i++;
-	}
-	free(str);
-}
-
-void	ft_free(t_game *game)
-{
-	if (game->map)
-		ft_free_tab(game->map);
-	if (game->mlx.mlx_win)
-		mlx_destroy_window(game->mlx.mlx_ptr, game->mlx.mlx_win);
-	if (game->mlx.mlx_ptr)
-		free(game->mlx.mlx_ptr);
+	mlx_put_image_to_window(game->mlx.mlx_ptr, game->mlx.mlx_win,
+		game->mlx.txt_bonus[1], game->enemy_pos[0] * 16,
+		game->enemy_pos[1] * 16);
 }

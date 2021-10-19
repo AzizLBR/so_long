@@ -6,11 +6,18 @@
 /*   By: aloubar <aloubar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 15:48:43 by aloubar           #+#    #+#             */
-/*   Updated: 2021/10/18 14:58:45 by aloubar          ###   ########.fr       */
+/*   Updated: 2021/10/18 16:29:42 by aloubar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes_bonus/so_long.h"
+
+static void	ft_ennemy_settings(t_game *game, int i, int j)
+{
+	game->enemy_isup = 1;
+	game->enemy_pos[0] = j;
+	game->enemy_pos[1] = i;
+}
 
 static int	ft_player_settings(t_game *game, int i, int j)
 {
@@ -75,6 +82,8 @@ int	ft_check_map(t_game *game, int i, int is_doublon_P, int is_doublon_E)
 		{
 			if (!ft_check_char(game->map[i][j]))
 				return (ft_error_map_checking(4));
+			if (game->enemy_isup == 0 && game->map[i][j] == '0')
+				ft_ennemy_settings(game, i, j);
 			else if (game->map[i][j] == 'P')
 				is_doublon_P += ft_player_settings(game, i, j);
 			else if (game->map[i][j] == 'E')
